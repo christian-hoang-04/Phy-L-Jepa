@@ -20,8 +20,9 @@ from torch.utils.data import DataLoader, Dataset, Subset, TensorDataset
 
 from phy_l_jepa.architectures import ImageMuellerTransformerEncoder
 from phy_l_jepa.colopola_dataset import ColoPolaDataset
+from phy_l_jepa.paths import default_data_root
 from phy_l_jepa.physics_features import CloudeTransformerEncoder
-DEFAULT_DATA_ROOT = Path(r"C:\Users\ayoub\Desktop\Stage\Project\data\GIGADATASET_COLAB_NPZ")
+DEFAULT_DATA_ROOT = default_data_root()
 DEFAULT_JEPA_CKPT = PROJECT_ROOT / "results" / "phys_jepa_cloude_transformer" / "phys_jepa_cloude_transformer" / "latest.pth.tar"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "results" / "phys_jepa_probe_suite"
 

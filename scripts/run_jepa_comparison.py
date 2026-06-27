@@ -21,9 +21,10 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from phy_l_jepa.architectures import MuellerPatchEncoder
 from phy_l_jepa.hybrid_physics_jepa import HybridRetentionPhysicsJEPA
+from phy_l_jepa.paths import default_data_root
 from phy_l_jepa.physics_features import FrozenLNPIVAEReference
 
-DATA_DIR = PROJECT_ROOT / "data" / "GIGADATASET_COLAB_NPZ"
+DATA_DIR = default_data_root()
 OUTPUT_DIR = Path("benchmark_results")
 OUTPUT_DIR.mkdir(exist_ok=True)
 

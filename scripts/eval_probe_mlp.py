@@ -15,9 +15,10 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
 
 from scripts.train_probe_mlp import ProbeHead, build_base_dataset, build_encoder, encode_dataset, fit_standardizer, standardize
+from phy_l_jepa.paths import default_data_root
 
 
-DEFAULT_DATA_ROOT = Path(r"C:\Users\ayoub\Desktop\Stage\Project\data\GIGADATASET_COLAB_NPZ")
+DEFAULT_DATA_ROOT = default_data_root()
 DEFAULT_JEPA_CKPT = PROJECT_ROOT / "results" / "phys_jepa_cloude_transformer" / "phys_jepa_cloude_transformer" / "latest.pth.tar"
 DEFAULT_SUITE_DIR = PROJECT_ROOT / "results" / "phys_jepa_probe_suite_full"
 

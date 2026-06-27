@@ -111,11 +111,11 @@ py -3.13 tools/convert_h5_to_npz.py --input path/to/train.h5 --output path/to/tr
 
 ### Expected local path
 
-By default, the launcher uses:
+By default, the launcher looks for:
 
-`C:\Users\ayoub\Desktop\Stage\Project\data\GIGADATASET_COLAB_NPZ`
+`data/GIGADATASET_COLAB_NPZ`
 
-Place your converted NPZ train/test files there (or update your config/path arguments accordingly).
+On other machines, place the converted NPZ train/test files at `data/GIGADATASET_COLAB_NPZ` inside the repo, or set `PHY_L_JEPA_DATA_ROOT` to the dataset folder, or pass `--data-root` explicitly.
 
 ## Training
 
