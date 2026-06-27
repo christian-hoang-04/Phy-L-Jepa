@@ -9,21 +9,28 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import sys
 import time
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import numpy as np
 import torch
 import yaml
 from torch.utils.data import DataLoader
 
-from architectures import MuellerPatchEncoder
-from colopola_dataset import ColoPolaDataset
-from hybrid_physics_jepa import HybridRetentionPhysicsJEPA
-from physics_features import FrozenLNPIVAEReference
+from phy_l_jepa.architectures import MuellerPatchEncoder
+from phy_l_jepa.colopola_dataset import ColoPolaDataset
+from phy_l_jepa.hybrid_physics_jepa import HybridRetentionPhysicsJEPA
+from phy_l_jepa.physics_features import FrozenLNPIVAEReference
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 DATA_DIR = PROJECT_ROOT / "data" / "GIGADATASET_COLAB_NPZ"
 DEFAULT_CONFIG = PROJECT_ROOT / "config.yaml"
 

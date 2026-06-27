@@ -8,8 +8,8 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from architectures import MuellerPatchEncoder, MaskedMuellerJEPA
-from physics_features import CloudeCoherencyFeatureExtractor
+from .architectures import MuellerPatchEncoder, MaskedMuellerJEPA
+from .physics_features import CloudeCoherencyFeatureExtractor
 
 
 class HybridRetentionPhysicsJEPA(nn.Module):

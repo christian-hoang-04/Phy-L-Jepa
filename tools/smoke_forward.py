@@ -12,8 +12,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from architectures import MaskedMuellerJEPA
-from physics_features import CloudeTransformerEncoder
+from phy_l_jepa.architectures import MaskedMuellerJEPA
+from phy_l_jepa.physics_features import CloudeTransformerEncoder
 
 
 def count_parameters(model: torch.nn.Module) -> int:

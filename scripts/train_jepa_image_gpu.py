@@ -3,18 +3,22 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import sys
 import time
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from architectures import ImageMuellerTransformerEncoder, MaskedMuellerJEPA
-from colopola_dataset import ColoPolaDataset
+from phy_l_jepa.architectures import ImageMuellerTransformerEncoder, MaskedMuellerJEPA
+from phy_l_jepa.colopola_dataset import ColoPolaDataset
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_DATA_ROOT = Path(r"C:\Users\ayoub\Desktop\Stage\Project\data\GIGADATASET_COLAB_NPZ")
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "results" / "masked_image_jepa_gpu"
 

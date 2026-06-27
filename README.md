@@ -20,9 +20,10 @@ The goal is to keep the codebase focused on the stage work and on a reproducible
 - `physics_features.py`: coherency extractor plus MLP and transformer encoders
 - `architectures.py`: lightweight Mueller encoder and MLP predictor
 - `hybrid_physics_jepa.py`: masked JEPA with direct physical retention
-- `pretrain_adaptive_hybrid.py`: CPU-only training entrypoint
-- `train_jepa_cpu_150.py`: dedicated 150-epoch training launcher for the Cloude transformer JEPA
-- `train_probe_mlp.py`: frozen-JEPA linear and MLP probe suite for healthy/cancer prediction
+- `scripts/`: runnable entrypoints for training, evaluation, probing, and comparison
+- `scripts/pretrain_adaptive_hybrid.py`: CPU-only training entrypoint
+- `scripts/train_jepa_cpu_150.py`: dedicated 150-epoch training launcher for the Cloude transformer JEPA
+- `scripts/train_probe_mlp.py`: frozen-JEPA linear and MLP probe suite for healthy/cancer prediction
 
 ## Data
 
@@ -121,7 +122,7 @@ Place your converted NPZ train/test files there (or update your config/path argu
 Run the 150-epoch Cloude transformer JEPA:
 
 ```bash
-py -3.13 train_jepa_cpu_150.py --epochs 150 --output-dir results/phys_jepa_cloude_transformer
+py -3.13 scripts/train_jepa_cpu_150.py --epochs 150 --output-dir results/phys_jepa_cloude_transformer
 ```
 
 Outputs are written under `results/phys_jepa_cloude_transformer/`.
@@ -131,7 +132,7 @@ Outputs are written under `results/phys_jepa_cloude_transformer/`.
 The more general CPU-only pretraining script is:
 
 ```bash
-py -3.13 pretrain_adaptive_hybrid.py --config config.yaml --epochs 150
+py -3.13 scripts/pretrain_adaptive_hybrid.py --config config.yaml --epochs 150
 ```
 
 It uses the same ColoPola loader and direct coherency features.

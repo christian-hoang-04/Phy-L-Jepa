@@ -4,21 +4,23 @@ import argparse
 import copy
 import json
 import random
+import sys
 import time
 from pathlib import Path
 from typing import Iterable
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset, Subset, TensorDataset
 
-from architectures import ImageMuellerTransformerEncoder
-from colopola_dataset import ColoPolaDataset
-from physics_features import CloudeTransformerEncoder
-
-
-PROJECT_ROOT = Path(__file__).resolve().parent
+from phy_l_jepa.architectures import ImageMuellerTransformerEncoder
+from phy_l_jepa.colopola_dataset import ColoPolaDataset
+from phy_l_jepa.physics_features import CloudeTransformerEncoder
 DEFAULT_DATA_ROOT = Path(r"C:\Users\ayoub\Desktop\Stage\Project\data\GIGADATASET_COLAB_NPZ")
 DEFAULT_JEPA_CKPT = PROJECT_ROOT / "results" / "phys_jepa_cloude_transformer" / "phys_jepa_cloude_transformer" / "latest.pth.tar"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "results" / "phys_jepa_probe_suite"

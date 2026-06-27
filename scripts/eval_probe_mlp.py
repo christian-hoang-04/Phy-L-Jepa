@@ -2,18 +2,21 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import torch
 import torch.nn as nn
 
 from torch.utils.data import DataLoader, TensorDataset
 
-from colopola_dataset import ColoPolaDataset
-from train_probe_mlp import ProbeHead, build_base_dataset, build_encoder, encode_dataset, fit_standardizer, standardize
+from scripts.train_probe_mlp import ProbeHead, build_base_dataset, build_encoder, encode_dataset, fit_standardizer, standardize
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_DATA_ROOT = Path(r"C:\Users\ayoub\Desktop\Stage\Project\data\GIGADATASET_COLAB_NPZ")
 DEFAULT_JEPA_CKPT = PROJECT_ROOT / "results" / "phys_jepa_cloude_transformer" / "phys_jepa_cloude_transformer" / "latest.pth.tar"
 DEFAULT_SUITE_DIR = PROJECT_ROOT / "results" / "phys_jepa_probe_suite_full"

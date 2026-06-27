@@ -1,6 +1,5 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
-import argparse
 import json
 import random
 import time
@@ -10,14 +9,9 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from architectures import MaskedMuellerJEPA
-from colopola_dataset import ColoPolaDataset
-from physics_features import CloudeTransformerEncoder
-
-
-PROJECT_ROOT = Path(__file__).resolve().parent
-DEFAULT_DATA_ROOT = Path(r"C:\Users\ayoub\Desktop\Stage\Project\data\GIGADATASET_COLAB_NPZ")
-DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "results" / "phys_jepa_cloude_transformer"
+from .architectures import MaskedMuellerJEPA
+from .colopola_dataset import ColoPolaDataset
+from .physics_features import CloudeTransformerEncoder
 
 
 def set_seed(seed: int) -> None:
@@ -195,33 +189,3 @@ def train_run(
     save_json(output_dir / "summary.json", result)
     return result
 
-
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", type=Path, default=DEFAULT_DATA_ROOT)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument("--epochs", type=int, default=150)
-    parser.add_argument("--batch-size", type=int, default=256)
-    parser.add_argument("--max-samples", type=int, default=4096)
-    parser.add_argument("--smoke-test", action="store_true")
-    args = parser.parse_args()
-
-    if args.smoke_test:
-        args.epochs = min(args.epochs, 1)
-        args.batch_size = min(args.batch_size, 64)
-        args.max_samples = min(args.max_samples, 64)
-        args.output_dir = PROJECT_ROOT / "results" / "phys_jepa_transformer_smoke"
-
-    train_run(
-        data_root=args.data_root,
-        output_dir=args.output_dir,
-        epochs=args.epochs,
-        batch_size=args.batch_size,
-        max_samples=args.max_samples,
-        smoke_test=args.smoke_test,
-    )
-    print(f"done -> {args.output_dir}", flush=True)
-
-
-if __name__ == "__main__":
-    main()
